@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.shortcuts import render
 from .models import Event
@@ -23,6 +24,19 @@ def account(request):
     return render(request, 'eventFinderApp/account.html')
 
 
-def add_event(request):
-    eventform = EventForm()
-    return render(request, 'eventFinderApp/add-event.html', {'eventform': eventform})
+def addevent(request):
+    # if this is a POST request, we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request
+        form = EventForm(request.POST)
+        # check whether it is valid
+        if form.is_valid():
+            #process the data in form.cleaned_data as required
+            #redirect to a new URL
+            form.save()
+            return HttpResponseRedirect(reverse('eventFinderApp:index'))
+        return render(request, 'eventFinderApp/addevent.html', {'eventform': form})
+    # if it is a GET request (or any other method) we'll create a blank form
+    else:
+        eventform = EventForm()
+        return render(request, 'eventFinderApp/addevent.html', {'eventform': eventform})
