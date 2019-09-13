@@ -20,6 +20,13 @@
                 <h2>Find free events near you!</h2>
             </div>
             {% include './nav.html' %}
+
+            {% if user.is_authenticated %}
+                <p>Hi {{ user.username }}</p>
+                <p><a href="{% url 'logout' %}">logout</a></p>
+            {% else %}
+                <p><a href="{% url 'login' %}">login</a></p>
+            {% endif %}
         </header>
 
         {% block content %}{% endblock %}
