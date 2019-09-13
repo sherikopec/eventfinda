@@ -3,9 +3,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class = "container">
+<div class = "event-container">
     <div class = "row justify-content-center">
-        <div class = "col-4" align="center">
+        <div class = "col-6" align="center">
             <h2 class = "mb-5"> Add an event </h2>
 
             <form action = "{% url 'eventFinderApp:addevent' %}" method = "post">

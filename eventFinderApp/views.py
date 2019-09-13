@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.shortcuts import render
-from .models import Event, Category, User
+from .models import Event, Category
 from .forms import EventForm
 
 
@@ -38,9 +38,9 @@ def addevent(request):
         return render(request, 'eventFinderApp/addevent.html', {'eventform': eventform})
 
 
-class UserView(generic.DetailView):
-    model = User
-    template_name = 'eventFinderApp/adduser.html'
+# class UserView(generic.DetailView):
+#     model = User
+#     template_name = 'eventFinderApp/adduser.html'
 
 
 def account(request):

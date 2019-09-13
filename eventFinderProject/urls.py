@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.auth import authenticate, login
+# from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('event-finder/', include('eventFinderApp.urls')),
     path('admin/', admin.site.urls),
+    path('users/', include('django.contrib.auth.urls')),
+    # path('', TemplateView.as_view(template_name='index.html')),
 ]
