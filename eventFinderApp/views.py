@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.shortcuts import render
-from .models import Event
+from .models import Event, Category
 from .forms import EventForm
 
 
@@ -18,10 +18,6 @@ class IndexView(generic.ListView):
 class EventView(generic.DetailView):
     model = Event
     template_name = 'eventFinderApp/event.html'
-
-
-def account(request):
-    return render(request, 'eventFinderApp/account.html')
 
 
 def addevent(request):
@@ -40,3 +36,12 @@ def addevent(request):
     else:
         eventform = EventForm()
         return render(request, 'eventFinderApp/addevent.html', {'eventform': eventform})
+
+
+# class UserView(generic.DetailView):
+#     model = User
+#     template_name = 'eventFinderApp/adduser.html'
+
+
+def account(request):
+    return render(request, 'eventFinderApp/account.html')

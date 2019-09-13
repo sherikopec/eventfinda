@@ -3,12 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class = "event-container">
+<div class = "container">
     <div class = "row justify-content-center">
-        <div class = "col-6" align="center">
-            <h2 class = "mb-5"> Add an event </h2>
+        <div class = "col-4" align="center">
+            <h2 class = "mb-5"> Create a user account </h2>
 
-            <form action = "{% url 'eventFinderApp:addevent' %}" method = "post">
+            <form action = "{% url 'eventFinderApp:adduser' %}" method = "post">
                 {% csrf_token %}
                 {{ eventform|crispy }}
                 <input type = "submit" value = "Submit">

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+<h2>Login</h2>
+
+{% block content %}
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Update" class="btn btn-primary">Login</button>
+  </form>
+
+{% endblock %}
