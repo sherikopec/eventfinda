@@ -14,6 +14,11 @@ class Event(models.Model):
     categories = models.ManyToManyField('Category', related_name='events')
     attendees = models.ManyToManyField(User, related_name = 'attending_events')
 
+    class Meta:
+        ordering = ('title',)
+
+    def __str__(self):
+        return str(self.title).capitalize()
 
 
 class Category(models.Model):
@@ -23,5 +28,5 @@ class Category(models.Model):
         ordering = ('name',)
 
     def __str__(self):
-        return self.name
+        return str(self.name).capitalize()
 
