@@ -9,7 +9,7 @@ class Event(models.Model):
     end_time = models.DateTimeField('end time and date')
     venue = models.CharField(max_length=200)
     categories = models.ManyToManyField('Category', related_name='events')
-    # users = models.ManyToManyField('User', related_name='events')
+
 
 
 class Category(models.Model):

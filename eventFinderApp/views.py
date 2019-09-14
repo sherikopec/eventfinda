@@ -38,10 +38,6 @@ def addevent(request):
         return render(request, 'eventFinderApp/addevent.html', {'eventform': eventform})
 
 
-# class UserView(generic.DetailView):
-#     model = User
-#     template_name = 'eventFinderApp/adduser.html'
-
 
 def account(request):
     return render(request, 'eventFinderApp/account.html')
