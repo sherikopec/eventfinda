@@ -15,5 +15,4 @@ urlpatterns = [
     # event-finder/add-event
     path('addevent/', views.addevent, name='addevent'),
     # event-finder/user
-    # path('adduser/', views.UserView.as_view(), name='adduser')
 ]

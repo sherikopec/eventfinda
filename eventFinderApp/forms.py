@@ -15,22 +15,3 @@ class EventForm(ModelForm):
             'description',
             'categories'
         ]
-
-# def __init__(self, *args, **kwargs):
-#     super().__init__(*args, **kwargs)
-#     self.helper = FormHelper()
-#     self.helper.layout = Layout(
-#         Row(
-#             Column('title', css_class = 'form-group col-6'),
-#             Column('location', css_class = 'form-group col-6')
-#             )
-#         )
-
-# class UserForm(ModelForm):
-#     class Meta:
-#         model = User
-#         fields = [
-#             'first_name',
-#             'last_name',
-#             'email'
-#         ]
