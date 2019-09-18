@@ -12,7 +12,7 @@ class Event(models.Model):
     host = models.ForeignKey(User, related_name = 'hosting_events', on_delete = models.CASCADE)
     venue = models.CharField(max_length=200)
     categories = models.ManyToManyField('Category', related_name='events')
-    attendees = models.ManyToManyField(User, related_name = 'attending_events')
+    # attendees = models.ManyToManyField(User, related_name = 'attending_events')
 
     class Meta:
         ordering = ('title',)

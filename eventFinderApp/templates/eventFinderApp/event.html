@@ -4,12 +4,13 @@
 
 <h2>{{ event.title }}</h2>
 
-<p>{{ event.location }}</p>
-<p>{{ event.venue }}</p>
-<p>{% for category in event.categories.all %}
+<p><strong>Location: </strong>{{ event.location }}</p>
+<p><strong>Venue: </strong>{{ event.venue }}</p>
+<p><strong>Hosted by: </strong> {{ event.host.username }}</p>
+<p><strong>Category: </strong> {% for category in event.categories.all %}
     {{ category.name }}
     {% endfor %}</p>
-<p>Starts at: {{ event.start_time }}</p>
-<p>Ends at: {{ event.end_time }}</p>
+<p><strong>Starts at: </strong> {{ event.start_time }}</p>
+<p><strong>Ends at: </strong> {{ event.end_time }}</p>
 
 {% endblock %}
