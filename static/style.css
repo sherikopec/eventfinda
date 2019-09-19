@@ -24,9 +24,10 @@ header {
     margin-bottom: 20px;
 }
 
-nav a {
-    margin: 0 10px;
+.navbar p {
+    padding-left: 20px;
 }
+
 
 a {
     color: #ff006f;

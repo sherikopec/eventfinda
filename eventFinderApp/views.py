@@ -4,6 +4,7 @@ from django.views import generic
 from django.shortcuts import render
 from .models import Event, Category
 from .forms import EventForm
+from django.contrib.auth.decorators import login_required
 
 
 class IndexView(generic.ListView):
@@ -14,12 +15,20 @@ class IndexView(generic.ListView):
         '''Return the events.'''
         return Event.objects.all()
 
+class AccountView(generic.ListView):
+    template_name = 'eventFinderApp/account.html'
+    context_object_name = 'events_list'
 
+    def get_queryset(self):
+        '''Return the events.'''
+        return Event.objects.filter(host = self.request.user)
+
+    
 class EventView(generic.DetailView):
     model = Event
     template_name = 'eventFinderApp/event.html'
 
-
+@login_required(login_url = 'login')
 def addevent(request):
     # if this is a POST request, we need to process the form data
     if request.method == 'POST':
@@ -28,7 +37,10 @@ def addevent(request):
         # check whether it is valid
         if form.is_valid():
             #process the data in form.cleaned_data as required
-            #redirect to a new URL
+            #get the new event from the form but don't save it yet
+            new_event = form.save(commit=False)
+            # add the host
+            new_event.host = request.user
             form.save()
             return HttpResponseRedirect(reverse('eventFinderApp:index'))
         return render(request, 'eventFinderApp/addevent.html', {'eventform': form})
@@ -36,12 +48,6 @@ def addevent(request):
     else:
         eventform = EventForm()
         return render(request, 'eventFinderApp/addevent.html', {'eventform': eventform})
-
-
-# class UserView(generic.DetailView):
-#     model = User
-#     template_name = 'eventFinderApp/adduser.html'
-
 
 def account(request):
     return render(request, 'eventFinderApp/account.html')
