@@ -51,3 +51,13 @@ def addevent(request):
 
 def account(request):
     return render(request, 'eventFinderApp/account.html')
+
+
+class EditEventView(generic.UpdateView):
+    form_class = EventForm
+    success_url = reverse_lazy('eventFinderApp:account')
+    template_name = 'eventFinderApp/editevent.html'
+
+    #get object
+    def get_object(self, queryset=None): 
+        return self.request.user
