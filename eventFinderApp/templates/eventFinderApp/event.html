@@ -13,6 +13,6 @@
 <p><strong>Starts at: </strong> {{ event.start_time }}</p>
 <p><strong>Ends at: </strong> {{ event.end_time }}</p>
 
-<a href="{% url 'eventFinderApp:editevent' %}"><button id="editevent">+ Edit details</button></a> 
+<a href="{% url 'eventFinderApp:editevent' event.id %}"><button id="editevent">+ Edit details</button></a> 
 
 {% endblock %}
