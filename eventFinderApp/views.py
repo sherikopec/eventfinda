@@ -59,24 +59,5 @@ class EditEventView(generic.UpdateView):
     success_url = reverse_lazy('eventFinderApp:account')
     template_name = 'eventFinderApp/editevent.html'
 
-@login_required(login_url = 'login')
-def editevent(request):
-    # if this is a POST request, we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request
-        form = EventForm(request.POST)
-        # check whether it is valid
-        if form.is_valid():
-            #process the data in form.cleaned_data as required
-            #get the new event from the form but don't save it yet
-            edited_event = form.save(commit=False)
-            form.save()
-            return HttpResponseRedirect(reverse('eventFinderApp:account'))
-        return render(request, 'eventFinderApp/addevent.html', {'eventform': form})
-    # if it is a GET request (or any other method) we'll create a blank form
-    else:
-        eventform = EventForm()
-        return render(request, 'eventFinderApp/addevent.html', {'eventform': eventform})
-
 
 
