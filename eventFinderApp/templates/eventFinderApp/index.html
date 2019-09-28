@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -8,9 +10,28 @@
     {# empty #}
 {% endif %}
 
+    <form method="GET">
+        <div class = "form-row">
+            <div class = "form-group col-md-4 mb-3">
+                {{ filter.form.categories|as_crispy_field }}
+            </div>
+            <div class = "form-group col-md-4 mb-3">
+                    {{ filter.form.location|as_crispy_field }}
+            </div>
+            <div class = "form-group col-md-4 mb-3">
+                    {{ filter.form.host|as_crispy_field }}
+            </div>
+        </div>
+        <div class = "form-row mb-5">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        
+    </form>
+
     <h3>See what's on!</h3>
+
     {% if events_list %}
-        {% for event in events_list %}
+        {% for event in filter.qs %}
             {% include "./detailsBox.html" with event=event %}
         {% endfor %}
     {% else %}

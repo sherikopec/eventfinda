@@ -1,4 +1,4 @@
-from django.forms import ModelForm, SplitDateTimeField
+from django.forms import ModelForm, SplitDateTimeField, ValidationError
 from crispy_forms.helper import FormHelper
 from .models import Event, Category
 from django import forms
