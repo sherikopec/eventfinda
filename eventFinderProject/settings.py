@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'bootstrap_datepicker',
+    'django_filters',
 ]
 
 REST_FRAMEWORK = {
