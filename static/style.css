@@ -70,3 +70,13 @@ a {
     background-color: #000;
 }
 
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+}
