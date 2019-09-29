@@ -15,5 +15,7 @@ urlpatterns = [
     # event-finder/add-event
     path('addevent/', views.addevent, name='addevent'),
     # event-finder/edit-event
-    path('editevent/<int:pk>', views.EditEventView.as_view(), name = 'editevent')
+    path('editevent/<int:pk>', views.EditEventView.as_view(), name = 'editevent'),
+    # delete event
+    path('deleteevent/<int:pk>', views.DeleteEventView.as_view(), name = 'deleteevent')
 ]

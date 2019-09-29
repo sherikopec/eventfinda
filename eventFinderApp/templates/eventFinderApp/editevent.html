@@ -10,5 +10,7 @@
       <button type="submit" value="Update" class="btn btn-primary">Update</button>
   </form>
 
+  <a href="{% url 'eventFinderApp:deleteevent' pk=event.id %}">Click here to delete this event</a>
+
 {% endblock %}
 

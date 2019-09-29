@@ -66,4 +66,10 @@ class EditEventView(generic.UpdateView):
     template_name = 'eventFinderApp/editevent.html'
 
 
+class DeleteEventView(generic.DeleteView):
+    model = Event
+    success_url = reverse_lazy('eventFinderApp:account')
+    template_name = 'eventFinderApp/deleteevent.html'
+
+
 
