@@ -9,4 +9,6 @@
     <button type="submit" value="Update" class="btn btn-primary">Update</button>
   </form>
 
+  <a href="{% url 'users:user_confirm_delete' pk=user.id %}">Click here to delete your profile</a>
+
 {% endblock %}

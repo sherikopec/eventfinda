@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
+from .models import CustomUser
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 class Register(generic.CreateView):
@@ -17,3 +18,9 @@ class EditProfile(generic.UpdateView):
     #get object
     def get_object(self, queryset=None): 
         return self.request.user
+
+
+class DeleteProfile(generic.DeleteView):
+    model = CustomUser
+    success_url = reverse_lazy('eventFinderApp:index')
+    template_name = 'user_confirm_delete.html'
