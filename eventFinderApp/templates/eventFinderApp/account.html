@@ -4,8 +4,10 @@
 <!-- link to register screen -->
 
 {% if user.is_authenticated %}
+    <p>Your account details:</p>
     <p>Hi, {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
+    <a href="{% url 'users:editprofile' %}"><button id="editprofile">+ Edit details</button></a> 
         
 {% else %}
     <p><a href="{% url 'login' %}">Login/Register</a></p>

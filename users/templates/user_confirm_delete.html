@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+Hey, are you sure you want to delete your account?
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Yep, I'm sure.</button>
+</form>
+
+{% endblock %}

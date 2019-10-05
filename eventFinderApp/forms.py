@@ -1,9 +1,16 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, SplitDateTimeField, ValidationError
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column
 from .models import Event, Category
+from django import forms
+from django.contrib.admin import widgets
+
+# class DateTimeInput(forms.DateTimeInput):
+#     input_type = 'date'
 
 class EventForm(ModelForm):
+    start_time = SplitDateTimeField(widget = widgets.AdminSplitDateTime())
+    end_time = SplitDateTimeField(widget = widgets.AdminSplitDateTime())
+
     class Meta:
         model = Event
         exclude = ['host']

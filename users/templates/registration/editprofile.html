@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" value="Update" class="btn btn-primary">Update</button>
+  </form>
+
+  <a href="{% url 'users:user_confirm_delete' pk=user.id %}">Click here to delete your profile</a>
+
+{% endblock %}
